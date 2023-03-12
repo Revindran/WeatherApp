@@ -15,18 +15,15 @@ import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import com.rar.devs.weatherapp.domain.weather.WeatherData
 import java.time.format.DateTimeFormatter
-import kotlin.math.roundToInt
 
 @RequiresApi(Build.VERSION_CODES.O)
 @Composable
 fun HourlyWeatherDisplay(
     weatherData: WeatherData, modifier: Modifier = Modifier, color: Color = Color.White
 ) {
-
     val formattedTime = remember(weatherData) {
         weatherData.time.format(DateTimeFormatter.ofPattern("HH:mm"))
     }
-
     Column(
         modifier = modifier,
         horizontalAlignment = Alignment.CenterHorizontally,

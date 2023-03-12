@@ -52,9 +52,8 @@ class MainActivity : ComponentActivity() {
                             .fillMaxSize()
                             .background(DeepBlue)
                     ) {
-                        WeatherCard(state = viewModel.state, backgroundColor = DarkBlue)
-                        Spacer(modifier = Modifier.height(16.dp))
-                        WeatherForCast(state = viewModel.state)
+                        WeatherCard(state = viewModel.state, backgroundColor = DeepBlue)
+                        WeatherForCast(viewModel = viewModel)
                     }
                     if (viewModel.state.isLoading) {
                         CircularProgressIndicator(modifier = Modifier.align(Alignment.Center))

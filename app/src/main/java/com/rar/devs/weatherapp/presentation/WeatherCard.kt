@@ -17,7 +17,6 @@ import androidx.compose.ui.res.vectorResource
 import androidx.compose.ui.text.TextStyle
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
-import java.time.format.DateTimeFormatter
 import kotlin.math.roundToInt
 
 @RequiresApi(Build.VERSION_CODES.O)
@@ -31,7 +30,6 @@ fun WeatherCard(
         Card(
             backgroundColor = backgroundColor,
             shape = RoundedCornerShape(10.dp),
-            modifier = modifier.padding(16.dp)
         ) {
             Column(
                 modifier = Modifier
@@ -39,44 +37,44 @@ fun WeatherCard(
                     .padding(16.dp),
                 horizontalAlignment = Alignment.CenterHorizontally
             ) {
-                Text(
-                    text = "Today ${data.time.format(DateTimeFormatter.ofPattern("HH:mm"))}",
-                    modifier = Modifier.align(
-                        Alignment.End
-                    ),
-                    color = Color.White
-                )
+                //                Text(
+                //                    text = "Today ${data.time.format(DateTimeFormatter.ofPattern("HH:mm"))}",
+                //                    modifier = Modifier.align(
+                //                        Alignment.End
+                //                    ),
+                //                    color = Color.White
+                //                )
                 Spacer(modifier = Modifier.height(16.dp))
                 Image(
                     painter = painterResource(id = data.weatherType.iconRes),
                     contentDescription = null, modifier = Modifier.width(200.dp)
                 )
-                Spacer(modifier = Modifier.height(16.dp))
+                Spacer(modifier = Modifier.height(8.dp))
                 Text(text = "${data.temperatureCelsius}°C", fontSize = 60.sp, color = Color.White)
+                Spacer(modifier = Modifier.height(8.dp))
+                Text(text = data.weatherType.weatherDesc, fontSize = 30.sp, color = Color.White)
                 Spacer(modifier = Modifier.height(16.dp))
-                Text(text = data.weatherType.weatherDesc, fontSize = 20.sp, color = Color.White)
-                Spacer(modifier = Modifier.height(32.dp))
                 Row(
                     modifier = Modifier.fillMaxWidth(),
                     horizontalArrangement = Arrangement.SpaceAround
                 ) {
                     WeatherDataDisplay(
                         value = data.pressure.roundToInt().toString(),
-                        unit = "hpa",
+                        unit = " hpa",
                         icon = ImageVector.vectorResource(id = com.rar.devs.weatherapp.R.drawable.ic_pressure),
                         iconTint = Color.White,
                         textStyle = TextStyle(color = Color.White)
                     )
                     WeatherDataDisplay(
                         value = data.humidity.roundToInt().toString(),
-                        unit = "%",
+                        unit = " %",
                         icon = ImageVector.vectorResource(id = com.rar.devs.weatherapp.R.drawable.ic_pressure),
                         iconTint = Color.White,
                         textStyle = TextStyle(color = Color.White)
                     )
                     WeatherDataDisplay(
                         value = data.windSpeed.roundToInt().toString(),
-                        unit = "km/h",
+                        unit = " km/h",
                         icon = ImageVector.vectorResource(id = com.rar.devs.weatherapp.R.drawable.ic_wind),
                         iconTint = Color.White,
                         textStyle = TextStyle(color = Color.White)
